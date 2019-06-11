@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>CANVAS</title>
+        <style>
+            canvas{
+                background: #23a866;
+            }
+        </style>
+	</head>
+	<body>
+        <canvas id="canvas" width="950" height="950"></canvas>
+        <script>
+            var canvas = document.getElementById("canvas");
+            var cv = canvas.getContext('2d');
+            cv.fillStyle = 'yellow';
+            // 绘制实心矩形
+            cv.fillRect(300,200,500,300);
+            // 绘制空心描边的矩形
+            cv.strokeStyle = 'purple';
+            cv.lineWidth = 5;
+            cv.strokeRect(300,200,300,150);
+            cv.clearRect(260,150,250,150);
+        </script>
+    </body>
+</html>

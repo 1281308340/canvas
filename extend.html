@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>canvas实现画板功能</title>
+        <style>
+            canvas{
+                background: #23A866;
+            }
+        </style>
+	</head>
+	<body>
+        颜色：<input type="color" id="color" />
+        粗心：<input type="range" id="range" min="1" max="20" value="3"/>
+        <span id="r" >3</span>
+        <input type="button" id="xp" value="橡皮檫" />
+    
+        <canvas id="canvas" width="600px" height="600px"></canvas>
+        <script>
+            var canvas = document.getElementById("canvas");
+            var cv = canvas.getContext('2d');
+            cv.strokeStyle='yellow';
+            cv.lineWidth=3;
+             // 给canvas添加鼠标按下事件
+            canvas.onmousedown = function(e){
+                var ev = window.event||e;
+                    // 获得鼠标的位置
+                var mousex= ev.layerX||ev.offsetX;
+                var mousey = ev.layerY||ev.offsetY;
+                cv.beginPath();
+                // 设置起点
+                cv.moveTo(mousex,mousey);
+                canvas.onmousemove = function(e){
+                    var ev=window.event||e;
+                    // 获得鼠标最新的位置
+                    var newx = ev.layerX||ev.offsetX;
+                    var newy = ev.layerY||ev.offsetY;
+                    cv.lineTo(newx,newy);
+                    cv.stroke();
+                    
+                    
+                }
+            }
+            canvas.onmouseup = function(){
+                // 取消鼠标移动事件
+                canvas.onmousemove=null;
+                cv.closePath();
+            }
+            // 颜色
+            document.getElementById('color').onchange=function(){
+                cv.strokeStyle=this.value;
+            }
+            document.getElementById('range').onchange=function(){
+            
+                cv.lineWidth=this.value;
+                document.getElementById("r").innerHTML=this.value;
+               
+            }
+            // 橡皮擦
+            document.getElementById("xp").onclick=function(){
+               cv.strokeStyle="#23A866";
+            }
+        </script>
+	</body>
+</html>

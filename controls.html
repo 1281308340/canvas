@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>画布控制</title>
+        <style>
+            canvas{
+                background: #222;
+            }
+        </style>
+	</head>
+	<body>
+        <canvas id="canvas" width="500px" height="500px"></canvas>
+        <script>
+           var canvas=document.getElementById("canvas");
+           var cv=canvas.getContext('2d');
+           对画布的控制写在绘制之前,缩放;
+           // cv.scale(1.5,0.6);
+           // cv.translate(100,200);
+           // cv.rotate();
+    // 对于画布的旋转(单位是弧度)
+    // 360度=2π
+           cv.rotate(30*Math.pi/180);
+           // 旋转30度/
+           cv.beginPath();
+           cv.moveTo(30,30);
+           cv.lineTo(200,200);
+           cv.lineTo(370,30);
+           cv.closePath();
+           
+           cv.lineWidth=5;
+           cv.strokeStyle='yellow';
+           cv.stroke();
+           
+       </script> 
+	</body>
+</html>

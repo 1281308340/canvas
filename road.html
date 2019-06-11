@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>CANVAS</title>
+        <style>
+            canvas{
+                background: #23a866;
+            }
+        </style>
+	</head>
+	<body>
+        <canvas id="canvas" width="950" height="950"></canvas>
+        <script>
+            var canvas = document.getElementById("canvas");
+            var cv = canvas.getContext('2d');
+            // 开启路径
+            cv.beginPath();
+            // 设置起点
+            cv.moveTo(20,20);
+            // 指定路径的一个终点
+            cv.lineTo(150,300);
+            cv.lineTo(280,20);
+            cv.lineTo(410,300);
+            cv.lineTo(500,20);
+            // 关闭路径
+            cv.closePath();
+            // 指定线条的样式
+            cv.strokeStyle = 'yellow';
+            cv.lineWidth=5;
+            // 绘制出来路径的线条
+            cv.stroke();
+            cv.fillStyle='yellow';
+            cv.fill();
+        </script>
+    </body>
+</html>
+
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>canvas实现画板功能</title>
+        <style>
+            canvas{
+                background: #23A866;
+            }
+        </style>
+	</head>
+	<body>
+        <canvas id="canvas" width="600px" height="600px"></canvas>
+        <script>
+            var canvas = document.getElementById("canvas");
+            var cv = canvas.getContext('2d');
+            cv.strokeStyle='yellow';
+            cv.lineWidth=3;
+             // 给canvas添加鼠标按下事件
+            canvas.onmousedown = function(e){
+                var ev = window.event||e;
+                    // 获得鼠标的位置
+                var mousex= ev.layerX||ev.offsetX;
+                var mousey = ev.layerY||ev.offsetY;
+                // 设置起点
+                cv.moveTo(mousex,mousey);
+                canvas.onmousemove = function(e){
+                    var ev=window.event||e;
+                    // 获得鼠标最新的位置
+                    var newx = ev.layerX||ev.offsetX;
+                    var newy = ev.layerY||ev.offsetY;
+                    cv.lineTo(newx,newy);
+                    cv.stroke();
+                }
+            }
+            canvas.onmouseup = function(){
+                // 取消鼠标移动事件
+                canvas.onmousemove=null;
+            }
+        </script>
+	</body>
+</html>
